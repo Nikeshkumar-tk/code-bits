@@ -33,6 +33,10 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
+  pages:{
+    signIn:"/sign-in"
+  },
+  secret: env.NEXTAUTH_SECRET,
   callbacks: {
     session: ({ session, token }) => ({
       ...session,
@@ -41,6 +45,9 @@ export const authOptions: NextAuthOptions = {
         id: token.sub,
       },
     }),
+    redirect({ baseUrl }) {
+      return baseUrl
+    }
   },
   providers: [
     GithubProvider({
