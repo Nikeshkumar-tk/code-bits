@@ -2,10 +2,10 @@ import "@/styles/globals.css"
 
 import { Inter } from "next/font/google"
 import { cookies } from "next/headers"
+import { getServerAuthSession } from "@/server/auth"
 import { TRPCReactProvider } from "@/trpc/react"
 
 import { SiteHeader } from "@/components/site-header"
-import { getServerAuthSession } from "@/server/auth"
 
 const inter = Inter({
   subsets: ["latin"],
