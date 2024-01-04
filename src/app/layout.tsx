@@ -5,6 +5,7 @@ import { cookies } from "next/headers"
 import { getServerAuthSession } from "@/server/auth"
 import { TRPCReactProvider } from "@/trpc/react"
 
+import { NextThemeProvider } from "@/components/next-themes"
 import { SiteHeader } from "@/components/site-header"
 
 const inter = Inter({
@@ -29,8 +30,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
-          <SiteHeader />
-          {children}
+          <NextThemeProvider>
+            <SiteHeader />
+            {children}
+          </NextThemeProvider>
         </TRPCReactProvider>
       </body>
     </html>
