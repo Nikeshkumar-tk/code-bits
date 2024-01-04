@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "dev": "sst bind next dev",
+    "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
@@ -46,16 +46,14 @@
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.14",
+    "constructs": "10.3.0",
     "eslint": "^8.54.0",
     "husky": "^8.0.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.1.6",
-    "sst": "^2.39.2",
-    "aws-cdk-lib": "2.110.1",
-    "constructs": "10.3.0"
+    "typescript": "^5.1.6"
   },
   "ct3aMetadata": {
     "initVersion": "7.25.0"

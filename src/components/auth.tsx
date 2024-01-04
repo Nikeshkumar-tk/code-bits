@@ -30,7 +30,7 @@ export const UserInfo = ({ userInfo }: { userInfo: User | undefined }) => {
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={userInfo?.image} alt={userInfo?.name ?? ""} />
+            <AvatarImage src={userInfo?.image ?? ""} alt={userInfo?.name ?? ""} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>
