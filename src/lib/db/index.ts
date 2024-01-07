@@ -9,7 +9,7 @@ class DB {
   snippets: typeof Snippet
   private constructor() {
     this.connect()
-      .then((_) => console.log("connected to DB"))
+      .then(() => console.log("connected to DB"))
       .catch((err) => console.log(err))
     this.users = User
     this.snippets = Snippet

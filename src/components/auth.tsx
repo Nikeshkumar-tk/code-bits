@@ -1,9 +1,9 @@
 "use client"
 
+import Link from "next/link"
 import { ExitIcon, GearIcon } from "@radix-ui/react-icons"
 import type { User } from "next-auth"
 import { signIn, signOut } from "next-auth/react"
-import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
