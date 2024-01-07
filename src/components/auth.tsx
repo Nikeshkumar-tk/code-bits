@@ -1,13 +1,17 @@
 "use client"
 
+import { ExitIcon, GearIcon } from "@radix-ui/react-icons"
 import type { User } from "next-auth"
-import { signIn } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react"
+import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -48,43 +52,21 @@ export const UserInfo = ({ userInfo }: { userInfo: User | undefined }) => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* <DropdownMenuGroup>
-                    <DropdownMenuItem asChild>
-                        <Link href="/dashboard/stores">
-                            <DashboardIcon
-                                className="mr-2 h-4 w-4"
-                                aria-hidden="true"
-                            />
-                            Dashboard
-                            <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link href="/dashboard/billing">
-                            <Icons.dollarSign
-                                className="mr-2 h-4 w-4"
-                                aria-hidden="true"
-                            />
-                            Billing
-                            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link href="/dashboard/account">
-                            <GearIcon className="mr-2 h-4 w-4" aria-hidden="true" />
-                            Settings
-                            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                        </Link>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                    <Link href="/signout">
-                        <ExitIcon className="mr-2 h-4 w-4" aria-hidden="true" />
-                        Log out
-                        <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                    </Link>
-                </DropdownMenuItem> */}
+        <DropdownMenuGroup>
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard/stores">
+              <GearIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+              Setting
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <div className="cursor-pointer" onClick={() => signOut()}>
+              <ExitIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+              Log out
+            </div>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        {/* <DropdownMenuSeparator /> */}
       </DropdownMenuContent>
     </DropdownMenu>
   )

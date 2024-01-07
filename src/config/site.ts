@@ -10,4 +10,18 @@ export const siteConfig = {
       icon: "github",
     },
   ] satisfies SocialType[],
+  navItems: [
+    {
+      name: "Explore",
+      link: "/",
+    },
+    {
+      name: "Saved",
+      link: "/snippets",
+    },
+    {
+      name: "Drafts",
+      link: "/about",
+    },
+  ],
 }

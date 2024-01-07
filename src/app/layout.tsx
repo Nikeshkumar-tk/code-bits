@@ -32,7 +32,7 @@ export default async function RootLayout({
         <TRPCReactProvider cookies={cookies().toString()}>
           <NextThemeProvider>
             <SiteHeader />
-            {children}
+            <div className="px-24 py-4">{children}</div>
           </NextThemeProvider>
         </TRPCReactProvider>
       </body>

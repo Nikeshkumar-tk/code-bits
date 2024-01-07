@@ -1,7 +1,9 @@
 import { getServerAuthSession } from "@/server/auth"
 
 import { SignInBtn, UserInfo } from "./auth"
-import { MainNav } from "./main-nav"
+import { AppLogo } from "./logo"
+import { MainNav, NavItems } from "./main-nav"
+import { ModeToggle } from "./mode-toggle"
 import { Socials } from "./socials"
 
 export async function SiteHeader() {
@@ -9,8 +11,10 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="flex w-full justify-between px-20 py-2">
-        <MainNav />
+        <AppLogo />
+        <NavItems />
         <div className="flex items-center gap-5">
+          <ModeToggle />
           <Socials />
           {session ? <UserInfo userInfo={session?.user} /> : <SignInBtn />}
         </div>

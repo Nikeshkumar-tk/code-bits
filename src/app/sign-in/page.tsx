@@ -9,7 +9,7 @@ import { AppLogo } from "@/components/logo"
 
 export default function SignInPage() {
   return (
-    <div className="absolute left-0 top-0 z-[100] flex h-screen w-screen items-center justify-center bg-white px-10">
+    <div className="absolute left-0 top-0 z-[100] flex h-screen w-screen items-center justify-center bg-background px-10">
       <Card className="w-[50vh] py-3 shadow-sm">
         <CardHeader>
           <div className="flex w-full justify-center">
@@ -22,7 +22,7 @@ export default function SignInPage() {
               <Icons.github className="mr-2 h-4 w-4" />
               Sign In with GitHub
             </Button>
-            <Button>
+            <Button onClick={() => signIn("google")}>
               <Icons.google className="mr-2 h-4 w-4" />
               Sign In with Google
             </Button>
