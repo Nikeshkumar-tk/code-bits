@@ -11,6 +11,8 @@ import { initTRPC, TRPCError } from "@trpc/server"
 import superjson from "superjson"
 import { ZodError } from "zod"
 
+import { db } from "@/lib/db"
+
 /**
  * 1. CONTEXT
  *
@@ -85,6 +87,7 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
     ctx: {
       // infers the `session` as non-nullable
       session: { ...ctx.session, user: ctx.session.user },
+      db,
     },
   })
 })

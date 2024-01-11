@@ -2,7 +2,7 @@ import { getServerAuthSession } from "@/server/auth"
 
 import { SignInBtn, UserInfo } from "./auth"
 import { AppLogo } from "./logo"
-import { MainNav, NavItems } from "./main-nav"
+import { NavItems } from "./main-nav"
 import { ModeToggle } from "./mode-toggle"
 import { Socials } from "./socials"
 

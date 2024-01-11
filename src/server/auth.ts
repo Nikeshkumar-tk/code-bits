@@ -1,4 +1,5 @@
 import { env } from "@/env"
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import {
   getServerSession,
   type DefaultSession,
@@ -6,6 +7,8 @@ import {
 } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
+
+import mongoClient from "@/lib/db/adapter"
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -38,6 +41,12 @@ export const authOptions: NextAuthOptions = {
     signIn: "/sign-in",
   },
   secret: env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
+  adapter: MongoDBAdapter(mongoClient),
   callbacks: {
     session: ({ session, token }) => ({
       ...session,
