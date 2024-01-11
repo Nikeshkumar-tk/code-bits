@@ -18,6 +18,7 @@ const newSnippetSchema = snippetSchema.pick({
   description: true,
 })
 type NewSnippet = z.infer<typeof newSnippetSchema>
+
 type SnippetEditorProps = {
   onSubmit: (values: NewSnippet) => void
 }

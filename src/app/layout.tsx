@@ -5,6 +5,7 @@ import { cookies } from "next/headers"
 import { getServerAuthSession } from "@/server/auth"
 import { TRPCReactProvider } from "@/trpc/react"
 
+import { Toaster } from "@/components/ui/sonner"
 import { NextThemeProvider } from "@/components/next-themes"
 import { SiteHeader } from "@/components/site-header"
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <NextThemeProvider>
             <SiteHeader />
             <div className="px-24 py-4">{children}</div>
+            <Toaster />
           </NextThemeProvider>
         </TRPCReactProvider>
       </body>

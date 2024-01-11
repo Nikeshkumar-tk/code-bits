@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import { api } from "@/trpc/react"
 
 import { Button } from "@/components/ui/button"
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader, PageHeaderHeading } from "@/components/page-header"
 
 export default function Home() {
@@ -20,6 +20,23 @@ export default function Home() {
           <Button>Create</Button>
         </Link>
       </div>
+      <AllSnippets />
     </main>
+  )
+}
+
+const AllSnippets = () => {
+  const getAllSnippetsQuery = api.snippets.getAllSnippets.useQuery()
+
+  return (
+    <div className="mt-4 grid gap-2 md:grid-cols-3">
+      {getAllSnippetsQuery.data?.map((snippet) => (
+        <Card>
+          <CardHeader>
+            <CardTitle>{snippet.title}</CardTitle>
+          </CardHeader>
+        </Card>
+      ))}
+    </div>
   )
 }

@@ -21,4 +21,8 @@ export const snippetRouter = createTRPCRouter({
       const response = await ctx.db.snippets.create({ ...input, ...userInfo })
       return response
     }),
+  getAllSnippets: protectedProcedure.query(async ({ ctx }) => {
+    const response = await ctx.db.snippets.find({})
+    return response
+  }),
 })
