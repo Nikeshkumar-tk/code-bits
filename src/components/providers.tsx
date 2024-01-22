@@ -20,4 +20,4 @@ export const NextThemeProvider = ({
   )
 }
 
-export { SessionProvider } 
+export { SessionProvider }

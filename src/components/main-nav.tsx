@@ -2,18 +2,12 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { type Session } from "next-auth"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 
-import { type Session } from "next-auth"
-
-
-export const NavItems = ({
-  session
-}: {
-  session: Session | null
-}) => {
+export const NavItems = ({ session }: { session: Session | null }) => {
   const pathname = usePathname()
   return (
     <div className="flex items-center space-x-10">

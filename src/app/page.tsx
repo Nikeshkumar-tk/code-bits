@@ -1,26 +1,30 @@
 "use client"
 
-import { api } from "@/trpc/react"
 import Link from "next/link"
+import { api } from "@/trpc/react"
+import { useSession } from "next-auth/react"
 
-import { PageHeader, PageHeaderHeading } from "@/components/page-header"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Spinner } from "@/components/utils"
-import { useSession } from "next-auth/react"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { LandingPage } from "@/components/landing-page"
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { Spinner } from "@/components/utils"
 
 export default function Home() {
   const session = useSession()
-  if(session.status === "unauthenticated"){
-    return (
-      <LandingPage />
-    )
+  if (session.status === "unauthenticated") {
+    return <LandingPage />
   }
   return (
     <main>
-      <div className="flex justify-between w-full">
+      <div className="flex w-full justify-between">
         <PageHeader>
           <PageHeaderHeading size={"sm"} as={"h6"} className="font-semibold">
             Explore Snippets
@@ -41,7 +45,7 @@ const AllSnippets = () => {
   return (
     <div className="mt-4 grid gap-2 md:grid-cols-3">
       {getAllSnippetsQuery.isLoading && (
-        <div className="w-screen max-h-screen flex justify-center items-center">
+        <div className="flex max-h-screen w-screen items-center justify-center">
           <Spinner className="animate-spin" />
         </div>
       )}
@@ -55,15 +59,17 @@ const AllSnippets = () => {
               {snippet.description.slice(0, 200)}
             </p>
           </CardContent>
-          <CardFooter className="mx-0 px-5 justify-between items-center">
-            <div className="flex item-center gap-2">
+          <CardFooter className="mx-0 items-center justify-between px-5">
+            <div className="item-center flex gap-2">
               <Avatar className="h-8 w-8">
                 <AvatarImage
                   src={snippet.authorImage}
                   alt={snippet?.authorName ?? ""}
                 />
               </Avatar>
-              <span className="text-sm text-muted-foreground mt-1 hover:underline cursor-pointer">@{snippet.authorName}</span>
+              <span className="mt-1 cursor-pointer text-sm text-muted-foreground hover:underline">
+                @{snippet.authorName}
+              </span>
             </div>
             <Link href={`snippet/${snippet._id.toString()}`}>
               <Button variant={"link"}>Read more</Button>

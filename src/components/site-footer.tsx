@@ -14,7 +14,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
             <a
-            //   href={siteConfig.links.twitter}
+              //   href={siteConfig.links.twitter}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
@@ -41,7 +41,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             </a>
             . The source code is available on{" "}
             <a
-            //   href={}
+              //   href={}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

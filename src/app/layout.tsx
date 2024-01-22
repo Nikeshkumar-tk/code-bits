@@ -7,8 +7,8 @@ import { TRPCReactProvider } from "@/trpc/react"
 
 import { Toaster } from "@/components/ui/sonner"
 import { NextThemeProvider, SessionProvider } from "@/components/providers"
-import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,14 +31,14 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <SessionProvider session={session}>
-        <TRPCReactProvider cookies={cookies().toString()}>
-          <NextThemeProvider>
-            <SiteHeader />
-            <div className="px-8 sm:px-24 py-4">{children}</div>
-            <Toaster />
-            <SiteFooter />
-          </NextThemeProvider>
-        </TRPCReactProvider>
+          <TRPCReactProvider cookies={cookies().toString()}>
+            <NextThemeProvider>
+              <SiteHeader />
+              <div className="px-8 py-4 sm:px-24">{children}</div>
+              <Toaster />
+              <SiteFooter />
+            </NextThemeProvider>
+          </TRPCReactProvider>
         </SessionProvider>
       </body>
     </html>
