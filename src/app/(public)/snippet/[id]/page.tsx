@@ -1,9 +1,6 @@
-import {
-    PageHeader,
-    PageHeaderHeading
-} from "@/components/page-header"
-import { SnippetViewer } from "@/components/snippet-viewer"
 import { db } from "@/lib/db"
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { SnippetViewer } from "@/components/snippet-viewer"
 
 export default async function SingleSnippetPostViewPage({
   params,

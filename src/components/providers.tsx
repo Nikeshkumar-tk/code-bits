@@ -1,5 +1,6 @@
 "use client"
 
+import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from "next-themes"
 
 export const NextThemeProvider = ({
@@ -18,3 +19,5 @@ export const NextThemeProvider = ({
     </ThemeProvider>
   )
 }
+
+export { SessionProvider } 

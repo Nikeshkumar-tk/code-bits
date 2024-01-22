@@ -15,7 +15,7 @@ export async function SiteHeader() {
         <Link href={"/"}>
           <AppLogo />
         </Link>
-        <NavItems />
+        <NavItems session={session} />
         <div className="flex items-center gap-5">
           <ModeToggle />
           <Socials />
