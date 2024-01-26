@@ -10,7 +10,7 @@ import { AppLogo } from "@/components/logo"
 export default function SignInPage() {
   return (
     <div className="absolute left-0 top-0 z-[100] flex h-screen w-screen items-center justify-center bg-background px-10">
-      <Card className="w-[50vh] py-3 shadow-sm">
+      <Card className="w-[50vh] py-3 shadow-lg">
         <CardHeader>
           <div className="flex w-full justify-center">
             <AppLogo />

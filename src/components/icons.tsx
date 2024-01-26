@@ -9,7 +9,7 @@ export const Icons = {
       width="32"
       height="32"
       fill="none"
-      stroke="black"
+      stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -21,7 +21,7 @@ export const Icons = {
         textAnchor="middle"
         fontSize="10"
         fontFamily="Arial, sans-serif"
-        fill="black"
+        fill="currentColor"
       >
         C
       </text>

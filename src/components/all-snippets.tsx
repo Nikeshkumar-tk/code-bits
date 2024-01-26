@@ -19,14 +19,14 @@ export const AllSnippets = () => {
   const getAllSnippetsQuery = api.snippets.getAllSnippets.useQuery()
 
   return (
-    <div className="mt-4 grid gap-2 md:grid-cols-3">
+    <div className="mt-4 grid gap-2 md:grid-cols-3 h-[70vh]">
       {getAllSnippetsQuery.isLoading && (
         <div className="flex max-h-screen w-screen items-center justify-center">
           <Spinner className="animate-spin" />
         </div>
       )}
       {getAllSnippetsQuery.data?.map((snippet) => (
-        <Card className="hover:bg-muted-foreground/10">
+        <Card className="hover:bg-muted-foreground/10 h-52">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>{snippet.title}</CardTitle>
             <DropdownMenu>
