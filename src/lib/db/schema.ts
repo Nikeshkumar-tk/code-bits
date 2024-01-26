@@ -15,9 +15,10 @@ export const snippetSchema = new mongoose.Schema<SnippetType>({
   likes: Number,
   comments: Number,
   peopleLiked: Array,
-})
+  username: String
+}, { timestamps: true })
 
-export const User = mongoose.models.users || mongoose.model("users", userSchema)
+export const User = mongoose.models.users as mongoose.Model<UserType> || mongoose.model("users", userSchema)
 export const Snippet =
   (mongoose.models.snippets as mongoose.Model<SnippetType>) ||
   mongoose.model("snippets", snippetSchema)

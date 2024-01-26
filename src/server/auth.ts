@@ -8,6 +8,7 @@ import {
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 
+import { db } from "@/lib/db"
 import mongoClient from "@/lib/db/adapter"
 
 /**
@@ -20,8 +21,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string
-      // ...other properties
-      // role: UserRole;
+      username: string
     } & DefaultSession["user"]
   }
 
@@ -48,11 +48,19 @@ export const authOptions: NextAuthOptions = {
   //@ts-ignore
   adapter: MongoDBAdapter(mongoClient),
   callbacks: {
+    async jwt({ token }) {
+      const user = await db.users.findById(token.sub)
+      if (user) {
+        token.username = user.username
+      }
+      return token
+    },
     session: ({ session, token }) => ({
       ...session,
       user: {
         ...session.user,
         id: token.sub,
+        username: token.username
       },
     }),
     redirect({ baseUrl }) {

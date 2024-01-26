@@ -13,5 +13,6 @@ export const snippetSchema = z.object({
   likes: z.number(),
   comments: z.number(),
   peopleLiked: z.array(z.string()),
+  username:z.string(),
 })
 export type SnippetType = z.infer<typeof snippetSchema>

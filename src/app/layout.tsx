@@ -34,7 +34,7 @@ export default async function RootLayout({
           <TRPCReactProvider cookies={cookies().toString()}>
             <NextThemeProvider>
               <SiteHeader />
-              <div className="px-8 py-4 sm:px-24">{children}</div>
+              <div className="px-6 py-4 sm:px-24">{children}</div>
               <Toaster />
               <SiteFooter />
             </NextThemeProvider>

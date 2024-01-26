@@ -54,7 +54,7 @@ export const UserInfo = ({ userInfo }: { userInfo: User | undefined }) => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/stores">
+            <Link href="/settings" className="cursor-pointer">
               <GearIcon className="mr-2 h-4 w-4" aria-hidden="true" />
               Setting
             </Link>

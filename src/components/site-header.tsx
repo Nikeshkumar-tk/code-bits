@@ -11,7 +11,7 @@ export async function SiteHeader() {
   const session = await getServerAuthSession()
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
-      <div className="flex w-full justify-between px-20 py-2">
+      <div className="flex w-full justify-between px-4 sm:px-20 py-2">
         <Link href={"/"}>
           <AppLogo />
         </Link>
