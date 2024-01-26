@@ -1,7 +1,9 @@
-import { ProfileForm } from "@/components/forms/profile-form";
-import { Separator } from "@/components/ui/separator";
-import { api } from "@/trpc/server";
 import { cache } from "react"
+import { api } from "@/trpc/server"
+
+import { Separator } from "@/components/ui/separator"
+import { ProfileForm } from "@/components/forms/profile-form"
+
 export default async function SettingsProfilePage() {
   const userInfo = await cache(api.user.me.query)()
   return (

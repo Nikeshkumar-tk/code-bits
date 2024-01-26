@@ -17,14 +17,14 @@ export const snippetRouter = createTRPCRouter({
         image: ctx.session.user.image,
         authorId: ctx.session.user.id,
         authorImage: ctx.session.user.image,
-        username: ctx.session.user.username
+        username: ctx.session.user.username,
       }
       console.log(userInfo)
       const response = await ctx.db.snippets.create({ ...input, ...userInfo })
       return response
     }),
   getAllSnippets: protectedProcedure.query(async ({ ctx }) => {
-    const response = await ctx.db.snippets.find({}).sort({createdAt: -1})
+    const response = await ctx.db.snippets.find({}).sort({ createdAt: -1 })
     return response
   }),
 })

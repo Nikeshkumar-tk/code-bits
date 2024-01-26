@@ -24,34 +24,34 @@ import {
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
 
-
-const profileSchema = userSchema.pick({email:true, bio:true, image: true, username: true})
+const profileSchema = userSchema.pick({
+  email: true,
+  bio: true,
+  image: true,
+  username: true,
+})
 
 type ProfileFormValues = z.infer<typeof profileSchema>
 
-export function ProfileForm({
-  userInfo
-}:{
-  userInfo:ProfileFormValues
-}) {
+export function ProfileForm({ userInfo }: { userInfo: ProfileFormValues }) {
   const trpcUtils = api.useUtils()
   const updateUserMutation = api.user.update.useMutation({
     onSuccess() {
       toast.success("Profile info updated successfully")
     },
-    onSettled(){
+    onSettled() {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       trpcUtils.user.me.invalidate()
-    }
+    },
   })
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       email: userInfo.email ?? "",
-      bio:userInfo.bio ?? "",
-      image:userInfo.image ?? "",
-      username:userInfo.username ?? "",
+      bio: userInfo.bio ?? "",
+      image: userInfo.image ?? "",
+      username: userInfo.username ?? "",
     },
   })
 

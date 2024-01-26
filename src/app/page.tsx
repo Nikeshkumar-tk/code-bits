@@ -1,10 +1,10 @@
 import Link from "next/link"
+import { getServerAuthSession } from "@/server/auth"
 
+import { Button } from "@/components/ui/button"
 import { AllSnippets } from "@/components/all-snippets"
 import { LandingPage } from "@/components/landing-page"
 import { PageHeader, PageHeaderHeading } from "@/components/page-header"
-import { Button } from "@/components/ui/button"
-import { getServerAuthSession } from "@/server/auth"
 
 export default async function Home() {
   const session = await getServerAuthSession()
@@ -27,5 +27,3 @@ export default async function Home() {
     </main>
   )
 }
-
-

@@ -1,8 +1,8 @@
-import { AccountForm } from "@/components/forms/account/account-form";
-import { Separator } from "@/components/ui/separator";
-import { api } from "@/trpc/server";
-import { cache } from "react";
+import { cache } from "react"
+import { api } from "@/trpc/server"
 
+import { Separator } from "@/components/ui/separator"
+import { AccountForm } from "@/components/forms/account/account-form"
 
 export default async function SettingsAccountPage() {
   const userInfo = await cache(api.user.me.query)()
@@ -16,7 +16,7 @@ export default async function SettingsAccountPage() {
         </p>
       </div>
       <Separator />
-      <AccountForm userInfo={userInfo}/>
+      <AccountForm userInfo={userInfo} />
     </div>
   )
 }

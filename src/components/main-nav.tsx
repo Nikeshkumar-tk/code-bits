@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 export const NavItems = ({ session }: { session: Session | null }) => {
   const pathname = usePathname()
   return (
-    <div className="hidden sm:flex items-center space-x-10">
+    <div className="hidden items-center space-x-10 sm:flex">
       {session && (
         <>
           {siteConfig.navItems.map((item) => (

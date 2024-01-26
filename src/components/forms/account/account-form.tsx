@@ -1,41 +1,47 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client"
 
+import { api } from "@/trpc/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { type z } from "zod"
 
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { userSchema } from "@/lib/validations"
-import { api } from "@/trpc/react"
-import { toast } from "sonner"
-
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 const accountFormSchema = userSchema.pick({
-  name:true,
-  dob:true,
+  name: true,
+  dob: true,
 })
 
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
-
-export function AccountForm({
-  userInfo
-}:{
-  userInfo:AccountFormValues
-}) {
+export function AccountForm({ userInfo }: { userInfo: AccountFormValues }) {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
-    defaultValues:{
-      name:userInfo.name,
-      dob:userInfo.dob
+    defaultValues: {
+      name: userInfo.name,
+      dob: userInfo.dob,
     },
   })
   const trpcUtils = api.useUtils()
@@ -43,14 +49,14 @@ export function AccountForm({
     onSuccess() {
       toast.success("Account info updated successfully")
     },
-    onSettled(){
+    onSettled() {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       trpcUtils.user.me.invalidate()
-    }
+    },
   })
 
   function onSubmit(data: AccountFormValues) {
-    updateUserMutation.mutate({...data})
+    updateUserMutation.mutate({ ...data })
   }
 
   return (

@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
       user: {
         ...session.user,
         id: token.sub,
-        username: token.username
+        username: token.username,
       },
     }),
     redirect({ baseUrl }) {
